@@ -30,7 +30,7 @@ jobs:
 
   release:
     name: Release
-    needs: [test, test-linux, analyze]
+    needs: [test, analyze]
     if: "contains(github.ref, 'tags/v')"
     runs-on: ubuntu-latest
     steps:
