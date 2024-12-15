@@ -275,7 +275,7 @@ func (h *AydHandlers) ToolsList(params json.RawMessage) (any, *ErrorBody) {
 					"type": "object",
 					"properties": JsonMap{
 						"query": JsonMap{
-							"type":        "query",
+							"type":        "string",
 							"description": "Search query for the log. It can includes target URI, status, and message in the log record.",
 						},
 						"since": JsonMap{
