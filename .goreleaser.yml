@@ -13,8 +13,8 @@ builds:
       - -trimpath
     ldflags:
       - '-s -w'
-      - '-X main.version={{ .Version }}'
-      - '-X main.commit={{ .ShortCommit }}'
+      - '-X main.Version={{ .Version }}'
+      - '-X main.Commit={{ .ShortCommit }}'
     hooks:
       post: 'upx-ucl --lzma {{ .Path }}'
   - id: without-upx
@@ -26,8 +26,8 @@ builds:
       - -trimpath
     ldflags:
       - '-s -w'
-      - '-X main.version={{ .Version }}'
-      - '-X main.commit={{ .ShortCommit }}'
+      - '-X main.Version={{ .Version }}'
+      - '-X main.Commit={{ .ShortCommit }}'
 
 archives:
   - format: tar.gz

@@ -15,7 +15,8 @@ import (
 )
 
 var (
-	Version = "HEAD"
+	Version = "UNKNOWN"
+	Commit  = "HEAD"
 )
 
 type JsonMap map[string]any
@@ -228,7 +229,7 @@ func (h *AydHandlers) InitializeHandler(params json.RawMessage) (any, *ErrorBody
 		},
 		ServerInfo: ServerInfo{
 			Name:    "Ayd Server",
-			Version: Version,
+			Version: fmt.Sprintf("%s (%s)", Version, Commit),
 		},
 		Instructions: fmt.Sprintf("Ayd is a simple service monitoring tool. This server provides status information and monitoring log for the services that are monitoring by Ayd running on %s.", h.URL),
 	}, nil
@@ -459,6 +460,8 @@ func (h *AydHandlers) ReadLog(params json.RawMessage) (any, *ErrorBody) {
 
 func main() {
 	if len(os.Args) != 2 {
+		fmt.Fprintf(os.Stderr, "MCP (Model Context Protocol) Server for Ayd status monitoring tool.\n")
+		fmt.Fprintf(os.Stderr, "Version: %s (%s)\n", Version, Commit)
 		fmt.Fprintf(os.Stderr, "Usage: %s <AYD_URL>\n", os.Args[0])
 		os.Exit(1)
 	}
